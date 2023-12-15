@@ -33,7 +33,7 @@ const Content = (prop)=>{
     </div>
   )
 }
-//part1
+//Creamos un componente part que se reutiliza en muchas ocasiones, de esta forma tenemos menos codigo y es mas eficiente
 const Part = (prop) =>{
   return(
     <div>
