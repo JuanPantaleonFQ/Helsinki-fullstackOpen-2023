@@ -14,7 +14,7 @@ const App = () => {
       <div>
         <center>
           <Header course={course}/>
-          <Content part={part1} ex={exercises1}part2={part2} ex2={exercises2}part3={part3} ex3={exercises3}/>
+          <Content parte={part1} ej={exercises1}parte2={part2} ex2={exercises2}parte3={part3} ex3={exercises3}/>
           <Total ex={exercises1} ex2={exercises2} ex3={exercises3}/>
         </center>
         
@@ -22,6 +22,24 @@ const App = () => {
    )
   
   
+}
+//Second component
+const Content = (prop)=>{
+  return (
+    <div>
+      <Part part={prop.parte} ex={prop.ej}/>
+      <Part part={prop.parte2} ex={prop.ex2}/>
+      <Part part={prop.parte3} ex={prop.ex3}/>
+    </div>
+  )
+}
+//part1
+const Part = (prop) =>{
+  return(
+    <div>
+      <p>{prop.part} {prop.ex}</p>
+    </div>
+  )
 }
 
 //First component
@@ -32,16 +50,8 @@ const Header = (prop) =>{
     </div>
   )  
 }
-//Second component
-const Content = (prop) =>{
-  return(
-    <div>
-      <p>{prop.part} {prop.ex}</p>
-      <p>{prop.part2} {prop.ex2}</p> 
-      <p>{prop.part3} {prop.ex3}</p>            
-    </div>
-  )
-}
+
+
 //third component
 const Total = (prop) =>{
   const total = prop.ex+ prop.ex2+ prop.ex3
