@@ -3,7 +3,7 @@ import { useState } from 'react'
 const Header = ({course}) =>{  
   return (
     <div>
-      <h1>{course}</h1>
+      <h1>{course.name}</h1>
     </div>
   )          
 }
@@ -25,7 +25,12 @@ const Part = ({part}) =>{
     </div>
   )
 }
-
+const Total = ({parts}) =>{
+  const total = parts[0].exercises + parts[1].exercises + parts[2].exercises
+  return(
+    <p>Number of excersises: {total}</p>
+  )
+}
 
 function App() {
   const course = {
@@ -48,8 +53,11 @@ function App() {
 
   return (
     <div>
-      
+      <Header course={course}/>
+      <Content parts={course.parts}/>
+      <Total parts={course.parts}/>
     </div>
   )
 }
+
 export default App
