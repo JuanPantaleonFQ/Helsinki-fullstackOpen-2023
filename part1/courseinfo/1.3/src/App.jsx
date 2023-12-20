@@ -18,23 +18,24 @@ const App = () => {
 
   return (
     <div>
-      <Header course={course} list={part2.name} />  
+      <Header courseName={course}/>
       <PartReader name={part1.name} ex={part1.exercises}/>
+      <PartReader name={part2.name} ex={part2.exercises}/>
+      <PartReader name={part3.name} ex={part3.exercises}/>
     </div>
   )
 }
 
 const Header = (prop) =>{  
   return(
-    <h1>{prop.course}</h1>
+    <h1>{prop.courseName}</h1>
   )
 }
 
-const PartReader = (prop)=>{  
-  console.log(prop)  
-  return(    
-    <p>{prop.name} {prop.ex}</p>
-  )  
+const PartReader = ({name,ex})=>{   
+  return(
+    <h3>{name} {ex}</h3>
+  )
 }
 
 export default App
