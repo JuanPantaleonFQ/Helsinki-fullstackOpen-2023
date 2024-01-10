@@ -7,30 +7,31 @@ const Display =({text})=>{
     <p>{text}</p>
   )
 }
-const DisplayStatistics = ({good,neutral,bad,total,average,positive}) => {
-  if(total == 0){
-    return(
+const StatisticLine = ({text,value})=>{
+  return(<p>{text} {value}</p>)    
+}
+
+const DisplayStatistics = (props) => {
+  if(props.total == 0 ){
+    return (
       <div>
-      <p>Statistics</p>
-      <p>No feedback given</p>
-      
+        <p>Statistics</p>
+        <p>No feedback given</p>
       </div>
     )
   }else{
-    return(
-      <div>
-      <p>Statistics</p>
-      <p>Good {good}</p>
-      <p>Nuetral {neutral}</p>
-      <p>Bad {bad}</p>
-      <p>All {total}</p>
-      <p>Average {average}</p>
-      <p>Positive {positive}%</p>
-      </div>    
-    )
+
   }
-  
+  return(
+    <div>
+      <StatisticLine text="good" value ={props.good} />
+      <StatisticLine text="neutral" value ={props.neutral} />
+      <StatisticLine text="bad" value ={props.bad} />
+      
+    </div>
+  )
 }
+
 
 
 function App() {  
@@ -41,6 +42,7 @@ function App() {
   const CalculateTotal = goodState +neutralState + badState
   const calculateAverage = (goodState-badState)/CalculateTotal
   const calculatePositive = (goodState/CalculateTotal) *100
+  
   const handleGood = () =>{
     setGoodState(goodState+1)
   }
