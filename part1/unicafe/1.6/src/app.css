@@ -1,0 +1,13 @@
+button{
+    height: 40px;
+    width: 50px;
+    border: solid rgb(41, 41, 41);
+    margin: 2px;
+    padding:1px;
+}
+
+body{
+    margin-top: 10%;
+    background-color: rgb(28, 28, 28);
+    color: rgb(192, 192, 192);
+}
