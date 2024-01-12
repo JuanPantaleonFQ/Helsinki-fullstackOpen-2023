@@ -12,7 +12,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 a {
   font-weight: 500;
   color: #646cff;
