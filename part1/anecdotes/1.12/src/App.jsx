@@ -21,12 +21,11 @@ const App = () => {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min);
   }  
-  const buttonSelector = () =>{
-    setSelected(selected)
+  const buttonSelector = () =>{           
+    setSelected(getRandomInt(0,7));
   }
   
-  return (
-    
+  return (    
     <div>
       {anecdotes[selected]}
       <br />     
