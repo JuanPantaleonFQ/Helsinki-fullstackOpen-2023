@@ -2,8 +2,24 @@ import { useState } from 'react'
 import './App.css'
 
 const Heading = ({heading}) => <h2>{ heading }</h2>
-const Paragraf = ( {text} ) => <h1>{ text }</h1>
+const Paragraf = ( {text} ) => <p>{ text }</p>
 
+const MostVotedText = ({ anecdotes , votes } ) => {
+  const maxVotes = Math.max( ...votes )
+  const mostVotedIndex = votes.indexOf(maxVotes)  
+  if (maxVotes == 0) {
+    return(
+      <div>
+        <p>No votes yet</p>
+      </div>
+    )
+  }else{
+    return(
+      <Paragraf text= {anecdotes[mostVotedIndex]}/>
+    )
+  }
+  
+}
 const App = () => {
   const anecdotes = [
     'If it hurts, do it more often.',
@@ -19,7 +35,7 @@ const App = () => {
   const [votes,setVotes] = useState(Array(anecdotes.length).fill(0))   
   //create an array of anecdotes.length size of ceros.
   const points = new Uint8Array(anecdotes.length); 
-
+  
   //function that fives random numbers
   function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -28,14 +44,16 @@ const App = () => {
   }  
   const buttonSelector = () =>{           
     setSelected(getRandomInt(0,7));
-    console.log(anecdotes[selected])
+    
   }
 
   const addVoteButton = () => {           
     const updatedVotes = [...votes]
     updatedVotes[selected] += 1   
     setVotes(updatedVotes)    
+    console.log(votes)
   }
+
   
   return (    
     <div>      
@@ -43,6 +61,8 @@ const App = () => {
       <Paragraf text = {anecdotes[selected]}/>            
       <button onClick={addVoteButton}>Vote</button>   
       <button onClick={buttonSelector}>Next anecdote</button>
+      <Heading heading= 'Anecdote with most votes'/>
+      <MostVotedText anecdotes = {anecdotes} votes ={votes}/>
     </div>
   )
 }

@@ -5,9 +5,11 @@
   text-align: center;
 }
 
-h1,h2 {
-  color: white;
-  font-size: larger;
+p {
+  color: rgb(192, 192, 192);
+ 
 }
 
-
+h2{
+  color: aliceblue;
+}
