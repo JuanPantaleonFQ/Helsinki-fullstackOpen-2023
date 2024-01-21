@@ -13,9 +13,9 @@ const App = () => {
     'The only way to go fast, is to go well.'
   ]
   const [selected, setSelected] = useState(0)
-  const [votes,setVotes] = useState(0)
+  const [votes,setVotes] = useState(Array(anecdotes.length).fill(0))   
   //create an array of anecdotes.length size of ceros.
-  let points = new Uint8Array(anecdotes.length); 
+  const points = new Uint8Array(anecdotes.length); 
 
   //function that fives random numbers
   function getRandomInt(min, max) {
@@ -27,16 +27,17 @@ const App = () => {
     setSelected(getRandomInt(0,7));
   }
 
-  const addVoteButton = (position) => { 
-    points = votes
-    setVotes()   
+  const addVoteButton = () => {           
+    const updatedVotes = [...votes]
+    updatedVotes[selected] += 1   
+    setVotes(updatedVotes)
   }
   
   return (    
     <div>
       {anecdotes[selected]}
       <br />  
-      <button onClick={addVoteButton(selected)}>Vote</button>   
+      <button onClick={addVoteButton}>Vote</button>   
       <button onClick={buttonSelector}>Next anecdote</button>
     </div>
   )
