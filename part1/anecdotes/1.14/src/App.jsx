@@ -6,7 +6,8 @@ const Paragraf = ( {text} ) => <p>{ text }</p>
 
 const MostVotedText = ({ anecdotes , votes } ) => {
   const maxVotes = Math.max( ...votes )
-  const mostVotedIndex = votes.indexOf(maxVotes)  
+  const mostVotedIndex = votes.indexOf(maxVotes) 
+     
   if (maxVotes == 0) {
     return(
       <div>
