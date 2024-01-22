@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Note from './components/Course'
+import Course from './components/Course'
 
 
 const App = () => {
@@ -23,10 +23,14 @@ const App = () => {
         exercises: 14,
         id: 3,
       },
+      {
+        name: 'Ghost part wich never loads',
+        exercises: 14,
+       
+      },
     ],
-  }
-
-  return <Course course={course} />
+  }  
+  return (<Course course={course} />)  
 }
 
 

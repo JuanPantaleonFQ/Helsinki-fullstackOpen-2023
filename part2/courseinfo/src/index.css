@@ -15,6 +15,9 @@ body {
   background-color: #1a1a1a;
   color: white;
 }
+p{
+  color: white;
+}
 
 h1 {
   font-size: 3.2em;
