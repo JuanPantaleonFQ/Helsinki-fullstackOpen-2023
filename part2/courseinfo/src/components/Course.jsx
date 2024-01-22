@@ -4,8 +4,8 @@ const HeaderWritter = ({ prop }) => <h1>{prop}</h1>
 const ParagrafWritter = ({ prop , number }) => <p>{prop} {number}</p> 
 
 
-const ContentWritter = ({ part }) => {
-   const total = part[0].exercises + part[1].exercises + part[2].exercises
+const ContentWritter = ({ part }) => { 
+    const total = part.reduce((sum ,part)=> sum + part.exercises, 0)
     return(
         <div>
             <ParagrafWritter prop={part[0].name} number={part[0].exercises}/>
