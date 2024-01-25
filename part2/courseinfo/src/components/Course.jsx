@@ -1,6 +1,6 @@
 import React from "react"
 
-const HeaderWritter = ({ prop }) => <h1>{prop}</h1>
+const HeaderWritter = ({ prop }) => <h1>{prop.name}</h1>
 const ParagrafWritter = ({ prop , number }) => <p>{prop} {number}</p> 
 
 
@@ -10,7 +10,6 @@ const ContentWritter = ({ part }) => {
         <div>
             <ParagrafWritter prop={part[0].name} number={part[0].exercises}/>
             <ParagrafWritter prop={part[1].name} number={part[1].exercises}/>
-            <ParagrafWritter prop={part[2].name} number={part[2].exercises}/>
             <ParagrafWritter prop="Total of" number={total}/>
         </div>
     )
@@ -19,8 +18,11 @@ const ContentWritter = ({ part }) => {
 const Course = ({ course }) => {      
     return(
         <div>
-            <HeaderWritter prop={course.name}/>
-            <ContentWritter part={course.parts}/>                        
+            <HeaderWritter prop={course[0]}/>
+            <ContentWritter part={course[0].parts}/>
+            <HeaderWritter prop={course[1]}/>
+            <ContentWritter part={course[1].parts}/>
+                                  
         </div>       
     )   
 }
