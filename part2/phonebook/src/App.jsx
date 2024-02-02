@@ -1,40 +1,46 @@
-import React, { useState } from 'react'
-import Note from './Components/Note'
-import './App.css'
+import { useState } from 'react'
 
 
-const App = (props) => {
-  const [notes, setNotes] = useState(props.notes)
-  const [newNote, setNewNote] = useState(
-         '...'
-  ) 
-  const [showAll, setShowAll] = useState(true)
+const App = () => {
+  const [persons, setPersons] = useState([
+    { name: 'Arto Hellas' }
+  ]) 
+  const [newName, setNewName] = useState('')
 
-  const addNote = (event) => {
-    event.preventDefault()   
-    setNotes([...notes, newNote]);
-  }
+  const handleChange = (event) =>{
+    setNewName(event.target.value)   
+ }
+ const stringChecker = () => {
+  return persons.some((person) => person.name.includes(newName));
+}
 
-  const handleNoteChange = (event) => {    
-    setNewNote(event.target.value)
-  }
+ const addPerson = (e) =>{
+    e.preventDefault();
+    if (newName && !stringChecker()) {
+      const newP = {name: newName}
+      setPersons(persons.concat(newP))
+      
+    }else{
+      alert(newName + "is empty or already exist!");
+    }    
+    
+ }
 
   return (
-    <div>
-      <h1>Notes</h1>
-      <ul>
-        {notes.map(note => 
-          <Note key={note} note={note} />
-        )}
-      </ul>
-      <form onSubmit={addNote}>
-        <input
-          value={newNote}
-          onChange={handleNoteChange}
-        />
-        <button type="submit">save</button>
-      </form>   
-    </div>
+    <div >
+      <h2>Phonebook</h2>
+      <form onSubmit={addPerson}>
+        <div>
+         name: <input type='text' onChange={handleChange}/>
+        </div>
+        <div>
+          <button type="submit">add</button>          
+        </div>
+      </form>
+      <h2>Numbers</h2>
+      {persons.map((persona) => (<div key={persona.name}>{persona.name}<br/></div>))}      
+      <div>debug: {newName}</div>
+    </div>    
   )
 }
 

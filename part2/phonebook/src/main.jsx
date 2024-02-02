@@ -7,6 +7,6 @@ const notas = [];
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App notes={notas}/>
+    <App/>
   </React.StrictMode>,
 )
